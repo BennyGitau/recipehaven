@@ -39,7 +39,6 @@ from resources.getRecipe import GetRecipe
 
 load_dotenv()
 app = Flask(__name__)
-#postgresql://recipehaven_user:XN5POO1F8Oafl2Qpu6UZhcjMnG7DRIgG@dpg-cr0sfoq3esus73amrupg-a.oregon-postgres.render.com/recipehaven
 CORS(app)
 
 
