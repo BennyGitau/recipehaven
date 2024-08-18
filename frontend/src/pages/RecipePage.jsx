@@ -99,7 +99,7 @@ function RecipePage() {
 
     const fetchUserRating = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/api/recipes/${param?.recipe}/rating`, { headers });
+        const response = await axios.get(`https://recipehaven.onrender.com/api/recipes/${param?.recipe}/rating`, { headers });
         const ratings = await response.data
         // Find the user's rating from the list of ratings
         if (ratings) {
