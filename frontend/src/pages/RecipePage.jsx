@@ -304,7 +304,7 @@ function RecipePage() {
               {recipe?.ingredients?.map((ingredient, i) => (
                 <li key={i}>
                   <div className="flex items-center space-x-3">
-                    <img src={ingredient.image} alt="recipe image" className="w-12 h-12 rounded-full"/>
+                    <img src={ingredient? ingredient.image : ''} alt="recipe image" className="w-12 h-12 rounded-full"/>
                     <span ref={ingredientsPrint} className="">{ingredient.name} {ingredient.quantity}</span>
                 </div>
                 </li>
