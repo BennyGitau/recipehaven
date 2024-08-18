@@ -41,7 +41,6 @@ function RecipePage() {
   const [userRating, setUserRating] = useState(null);
   const btnShare = `Share🔗`;
   const [bookMark, setBookMark] = useState(false);
-  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
   const handlePrint = () => {
     const printContent1 = imagePrint.current
@@ -99,7 +98,7 @@ function RecipePage() {
 
     const fetchUserRating = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/api/recipes/${param?.recipe}/rating`, { headers });
+        const response = await axios.get(`https://recipehaven.onrender.com/api/recipes/${param?.recipe}/rating`, { headers });
         const ratings = await response.data
         // Find the user's rating from the list of ratings
         if (ratings) {

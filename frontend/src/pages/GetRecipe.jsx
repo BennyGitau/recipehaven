@@ -5,17 +5,12 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-
 const GetRecipe = () => {
   const [ingredients, setIngredients] = useState("");
   const [suggestedRecipes, setSuggestedRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [noResults, setNoResults] = useState(false)
   const [inputError, setInputError] = useState("");
-  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
-
-
-
 
 
   const handleInputChange = (e) => {
