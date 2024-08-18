@@ -12,6 +12,8 @@ const GetRecipe = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noResults, setNoResults] = useState(false)
   const [inputError, setInputError] = useState("");
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
 
 
 
@@ -31,7 +33,7 @@ const GetRecipe = () => {
     setIsLoading(true);
     setNoResults(false)
     try {
-      const response = await axios.post('https://recipehaven.onrender.com/api/get-recipe', { ingredients: ingredients.split(',') });
+      const response = await axios.post(`${apiBaseUrl}/api/get-recipe`, { ingredients: ingredients.split(',') });
       console.log('Response:', response.data);
       setSuggestedRecipes(response.data.recipes);
       setIsLoading(false);

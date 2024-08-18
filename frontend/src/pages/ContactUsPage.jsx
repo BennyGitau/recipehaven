@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Layout from "../components/Layout/Layout";
 import clsx from "clsx";
+import { toast } from "react-toastify";
 
 function Contact() {
   const [selectedInquiry, setSelectedInquiry] = useState("");
@@ -33,7 +34,7 @@ function Contact() {
         publicKey: "barod1VE6oGwO1rac",
       })
       .then((response) => {
-        console.log("Email sent successfully:", response);
+        toast.success("Message successfully!", { theme: "colored", });
 
         setFormData({
           firstName: "",

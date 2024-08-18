@@ -14,16 +14,10 @@ const ProfilePage = () => {
   const [bannerImage, setBannerImage] = useState(null);
   const fileInputRef = React.useRef(null);
   const { _user, user } = userAuth();
-  console.log(_user)
 
   const image = localStorage.getItem('image', bannerImage);
   const userProfile = localStorage.getItem('profImage', _user?.image);
-  console.log(userProfile)
 
-  const preset_key = 'anonymous'
-  const cloud_name = 'dbqwzrkvg'
-
-  
 const handleImageChange = (e) => {
   const file = e.target.files[0];
   if (!file) {
@@ -33,8 +27,8 @@ const handleImageChange = (e) => {
 
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('upload_preset', preset_key);
-  axios.post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formData, {
+  formData.append('upload_preset', 'anonymous');
+  axios.post(`https://api.cloudinary.com/v1_1/dbqwzrkvg/image/upload`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     },
