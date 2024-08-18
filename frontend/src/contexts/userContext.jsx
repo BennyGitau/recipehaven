@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
     ingredients: [],
     other_images: [],
   });
-  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
   const headers = useMemo(() => ({
@@ -55,7 +55,7 @@ export const UserProvider = ({ children }) => {
       return null;
     }
     try {
-      const response = await fetch(`https://recipehaven.onrender.com/api/users/${email}`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${email}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export const UserProvider = ({ children }) => {
     return;
     }
     try {
-      const res = await axios.post(`https://recipehaven.onrender.com/api/login`, data)
+      const res = await axios.post(`${API_BASE_URL}/api/login`, data)
       setUser(res.data.user);
       if (res?.data.error) {
         toast.error(res.data.error, { 
@@ -141,7 +141,7 @@ export const UserProvider = ({ children }) => {
     }
 
     try {
-      await axios.post(`https://recipehaven.onrender.com/api/register`, formData );
+      await axios.post(`${API_BASE_URL}/api/register`, formData );
       setError(null);
       setFormData({
         email: "",
@@ -172,7 +172,7 @@ export const UserProvider = ({ children }) => {
 
   const handleUserUpdate = async (userData) => {
    try {
-     const response = await axios.patch(`https://recipehaven.onrender.com/api/profile`, userData, { headers });
+     const response = await axios.patch(`${API_BASE_URL}/api/profile`, userData, { headers });
      if (response.data.status === 200) {
       setTimeout(() => {
         toast.success(`${userData.firstname} ${userData.lastname} Profile updated successfully`, { theme: "colored" });
@@ -190,7 +190,7 @@ export const UserProvider = ({ children }) => {
 
     const handlePostRecipe = async (formData) => {
     try {
-      const response = await fetch(`https://recipehaven.onrender.com/api/recipes`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -216,7 +216,7 @@ export const UserProvider = ({ children }) => {
 
   const handleGetAllRecipes = async () => {
     try {
-      const response = await axios.get(`https://recipehaven.onrender.com/api/recipes`)
+      const response = await axios.get(`${API_BASE_URL}/api/recipes`)
       setRecipes(response.data);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -225,7 +225,7 @@ export const UserProvider = ({ children }) => {
 
   const handleGetSingleRecipe = async (id) => {
     try {
-      const response = await axios.get(`https://recipehaven.onrender.com/api/recipes/${id}`, headers)
+      const response = await axios.get(`${API_BASE_URL}/api/recipes/${id}`, headers)
       setRecipe(response.data);
       return response.data;
     } catch (error) {
@@ -236,7 +236,7 @@ export const UserProvider = ({ children }) => {
 
   const handleUpdateRecipe = async (id, formData) => {
     try {
-      const response = await fetch(`https://recipehaven.onrender.com/api/recipes/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -261,7 +261,7 @@ export const UserProvider = ({ children }) => {
   };
   const handleGetUserRecipes = async () => {
     try {
-        const response = await axios.get(`https://recipehaven.onrender.com/api/user-recipes`, { headers });
+        const response = await axios.get(`${API_BASE_URL}/api/user-recipes`, { headers });
 
         if (response.status === 200) {
             return response.data;
@@ -277,7 +277,7 @@ export const UserProvider = ({ children }) => {
 
   const handleDeleteRecipe = async (id) => {
     try {
-      const response = await axios.delete(`https://recipehaven.onrender.com/api/recipes/${id}`, {headers});
+      const response = await axios.delete(`${API_BASE_URL}/api/recipes/${id}`, {headers});
       if (response?.error) {
         toast.error(res.error, { theme: "colored" });
         return;
@@ -292,7 +292,7 @@ export const UserProvider = ({ children }) => {
 
   const handleAddComment = async (recipeId, commentData) => {
     try {
-      const response = await axios.post(`https://recipehaven.onrender.com/api/recipes/${recipeId}/comments`,commentData, {headers});
+      const response = await axios.post(`${API_BASE_URL}/api/recipes/${recipeId}/comments`,commentData, {headers});
       return response.data;
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -303,7 +303,7 @@ export const UserProvider = ({ children }) => {
   const handleAddResponse = async (recipeId, commentId, responseData) => {
     try {
       const response = await fetch(
-        `https://recipehaven.onrender.com/api/recipes/${recipeId}/comments/${commentId}/responses`,
+        `${API_BASE_URL}/api/recipes/${recipeId}/comments/${commentId}/responses`,
         {
           method: "POST",
           headers: {
@@ -332,7 +332,7 @@ export const UserProvider = ({ children }) => {
         toast.error("Didnt find a recipe_id...", recipe_id, { theme: "colored",});
         return;
       }
-      const response = await axios.post(`https://recipehaven.onrender.com/api/bookmarks`, {recipe_id}, {headers});
+      const response = await axios.post(`${API_BASE_URL}/api/bookmarks`, {recipe_id}, {headers});
       if (response.status===201) {
         toast.success(" Bookmarked!", { theme: "colored", });
         return ;
@@ -349,7 +349,7 @@ export const UserProvider = ({ children }) => {
 
   const handleGetUserBookMarks = async () => {
     try {    
-      const response = await axios.get(`https://recipehaven.onrender.com/api/bookmarks`,{headers})
+      const response = await axios.get(`${API_BASE_URL}/api/bookmarks`,{headers})
       return response.data;
     } catch (error) {
       console.error("Error getting bookmarks:", error);
@@ -358,7 +358,7 @@ export const UserProvider = ({ children }) => {
   };
   const handleRemoveFromBookMark = async (bookmark_id) => {
   try {
-    const response = await axios.delete(`https://recipehaven.onrender.com/api/bookmarks/${bookmark_id}`, { headers });
+    const response = await axios.delete(`${API_BASE_URL}/api/bookmarks/${bookmark_id}`, { headers });
     if (response.status === 200) {
       toast.success("Bookmark deleted!", {
         theme: "colored",
@@ -370,7 +370,7 @@ export const UserProvider = ({ children }) => {
 };
   const handleAddRating = async (recipeId, ratingData) => {
     try {
-      const response = await axios.post(`https://recipehaven.onrender.com/api/recipes/${recipeId}/ratings`, ratingData, {headers});
+      const response = await axios.post(`${API_BASE_URL}/api/recipes/${recipeId}/ratings`, ratingData, {headers});
       if (response.status !== 201) {
         throw new Error("Failed to add rating");
       }
@@ -383,7 +383,7 @@ export const UserProvider = ({ children }) => {
 
   const handleUpdateRating = async (recipeId, ratingData, ratingId) => {
     try {
-      const response = await axios.put(`https://recipehaven.onrender.com/api/recipes/${recipeId}/ratings/${ratingId}`,ratingData, {headers});
+      const response = await axios.put(`${API_BASE_URL}/api/recipes/${recipeId}/ratings/${ratingId}`,ratingData, {headers});
       if(response.status !== 200) {
         throw new Error("Failed to update rating");
       }

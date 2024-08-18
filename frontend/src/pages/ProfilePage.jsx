@@ -14,9 +14,9 @@ const ProfilePage = () => {
   const [bannerImage, setBannerImage] = useState(null);
   const fileInputRef = React.useRef(null);
   const { _user, user } = userAuth();
-
   const image = localStorage.getItem('image', bannerImage);
   const userProfile = localStorage.getItem('profImage', _user?.image);
+
 
 const handleImageChange = (e) => {
   const file = e.target.files[0];
