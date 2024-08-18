@@ -33,7 +33,7 @@ const GetRecipe = () => {
     setIsLoading(true);
     setNoResults(false)
     try {
-      const response = await axios.post(`${apiBaseUrl}/api/get-recipe`, { ingredients: ingredients.split(',') });
+      const response = await axios.post(`https://recipehaven.onrender.com/api/get-recipe`, { ingredients: ingredients.split(',') });
       console.log('Response:', response.data);
       setSuggestedRecipes(response.data.recipes);
       setIsLoading(false);
