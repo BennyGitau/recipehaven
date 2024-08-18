@@ -511,7 +511,7 @@ const RecipesPage = () => {
                           image={recipe.banner_image}
                           title={`Delicious Recipe: ${recipe.title}`} 
                           text={`Check out this delicious recipe for ${recipe.title}!`} 
-                          url={`http://127.0.0.1:5173/recipes/${recipe.id}`}
+                          url={`https://recipehaven-silk.vercel.app/recipes/${recipe.id}`}
                           btn={<FontAwesomeIcon icon={faShareAlt} />}
                         />
                     </div>
@@ -564,7 +564,7 @@ const RecipesPage = () => {
                           image={recipe.banner_image}
                           title={recipe.title} 
                           text={`Check out this delicious recipe for ${recipe.title}!`}
-                          url="https://yourwebsite.com/recipe/russian-salad"
+                          url={`https://recipehaven-silk.vercel.app/recipes/${recipe.id}`}
                           btn={<FontAwesomeIcon icon={faShareAlt} />}
                         />
                     </div>
@@ -573,9 +573,7 @@ const RecipesPage = () => {
               </div>
             ))}
           </div>
-        </section>
-        {/* Load More Button */}
-       
+        </section>       
        </div>
       </div>
     </div>

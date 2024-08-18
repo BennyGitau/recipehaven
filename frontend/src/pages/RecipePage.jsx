@@ -250,8 +250,8 @@ function RecipePage() {
                 <div className=" flex rounded-lg items-center">
                     <span className="text-slate-500 font-bold text-2xl mr-2">||</span>
                       <ShareBtn 
-                        url={`https://localhost:3000/recipe/${recipe.id}`}
-                        title="Delicious Sauce and Pasta"
+                        url={`https://recipehaven-silk.vercel.app/recipes/${recipe.id}`}
+                        title={recipe.title}
                         image={recipe.banner_image}
                         text='Check out this delicious recipe'
                         btn={btnShare}
