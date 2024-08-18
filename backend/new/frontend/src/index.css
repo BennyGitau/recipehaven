@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* START STYLING ON THE NEXT LINE (6) */
+
+/* Header and Search */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: #4a4a4a;
+  transition: color 0.3s ease;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px;
+  bottom: -4px;
+  left: 0;
+  background-color: #34d399;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::before,
+.nav-link-active::before {
+  visibility: visible;
+  width: 100%;
+}
+
+.nav-link-active {
+  color: #4a4a4a;
+  border-bottom: 4px solid #34d399;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2.5px rgb(39, 51, 42);
+  color: transparent;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
+}
+
+.modal-content {
+  @apply relative bg-gray-200 rounded-lg shadow-lg max-w-lg w-full mx-auto p-6;
+}
+
+/* Custom styles for Clerk sign-in form */
+.clerk-sign-in-form {
+  background-color: #e47070;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clerk-form-title {
+  font-size: 24px;
+  color: #333;
+}
+
+.clerk-form-container {
+  margin-top: 20px;
+}
+
+.clerk-social-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.clerk-input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.clerk-button-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.clerk-button-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+
+
+.error-page {
+  z-index: 0;
+  background-image: radial-gradient(
+    circle farthest-corner at 50% 50%,
+    #373737,
+    #001003
+  );
+  position: absolute;
+  inset: 0;
+}
+
