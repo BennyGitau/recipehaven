@@ -1,11 +1,8 @@
 import Select from 'react-select';
 import { countries } from 'countries-list';
-import React, { useState, useContext, useEffect } from 'react'
-// import FileUpload from './FileUpload';
+import React, { useState, useEffect } from 'react'
 import { userAuth } from '../../contexts/userContext';
 import axios from 'axios';
-// import Cookies from 'js-cookie';
-
 
 const countryOptions = Object.keys(countries).map((code) => ({
     value: countries[code].name,
@@ -14,19 +11,10 @@ const countryOptions = Object.keys(countries).map((code) => ({
 
 
 function ProfileForm() {
-    const preset_key = 'anonymous'
-    const cloud_name = 'dbqwzrkvg'
     const [profileImage, setProfileImage] = useState(null);
     const { _user, handleUserUpdate } = userAuth();
     const [uploadingImage, setUploadingImage] = useState(false);
 
-
-    //   const getUser = () => {
-    //   const user = Cookies.get('user');
-    //   return user ? JSON.parse(user) : null;
-    // };
-
-    // const currentUser = getUser();
     const [userData, setUserData] = useState({
         firstname: _user?.firstname || '',
         lastname: _user?.lastname || '',
@@ -94,11 +82,11 @@ const handleSubmit = async (e) => {
         setUploadingImage(true);
         const formData = new FormData();
         formData.append('file', imageFile);
-        formData.append('upload_preset', preset_key);
+        formData.append('upload_preset', 'anonymous');
 
         try {
             const res = await axios.post(
-                `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+                `https://api.cloudinary.com/v1_1/dbqwzrkvg/image/upload`,
                 formData
             );
             console.log(res)

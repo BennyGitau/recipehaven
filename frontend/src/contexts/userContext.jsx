@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
 import axios from "axios";
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 
 const UserContext = createContext();
@@ -42,7 +41,7 @@ export const UserProvider = ({ children }) => {
     ingredients: [],
     other_images: [],
   });
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
 
   const headers = useMemo(() => ({

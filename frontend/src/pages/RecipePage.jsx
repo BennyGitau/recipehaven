@@ -41,9 +41,7 @@ function RecipePage() {
   const [userRating, setUserRating] = useState(null);
   const btnShare = `Share🔗`;
   const [bookMark, setBookMark] = useState(false);
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-
-
+  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
   const handlePrint = () => {
     const printContent1 = imagePrint.current

@@ -12,7 +12,7 @@ const GetRecipe = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noResults, setNoResults] = useState(false)
   const [inputError, setInputError] = useState("");
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
 
 
