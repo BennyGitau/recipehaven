@@ -302,13 +302,24 @@ export const UserProvider = ({ children }) => {
 
   const handleAddResponse = async (recipeId, commentId, responseData) => {
     try {
-      const response = await axios.post(
-        `https://recipehaven.onrender.com/api/recipes/${recipeId}/comments/${commentId}/responses`,{headers},{text: responseData.text})
+      const response = await fetch(
+        `https://recipehaven.onrender.com/api/recipes/${recipeId}/comments/${commentId}/responses`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify(responseData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      return response.data;
+
+      const res = await response.json();
+      return res;
     } catch (error) {
       console.error("Error adding response:", error);
       return null;
