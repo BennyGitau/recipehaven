@@ -51,7 +51,6 @@ class RegisterResource(Resource):
 
 class LoginResource(Resource):
     def post(self):
-
         parser = reqparse.RequestParser()
         parser.add_argument(
             "email", type=str, required=True, help="Email cannot be blank!"
